@@ -137,7 +137,9 @@ function register(req) {
                 var user = new User(req.body);
                 //Lo guardamos en la BD
                 user.save(function(err, newRow) {
-                    if (err) return { result: false, err: err };
+                    if (err){
+                      return rejected(err);  
+                    } 
                     return resolve({ result: true, row: newRow });
                 });
             })
