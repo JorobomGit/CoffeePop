@@ -26,9 +26,9 @@ var crypto = require('crypto');
  *       "result": "true",
  *       "name": "Smith",
  *       "password": "e2bd05dfa68d1b2fa5deabc4a9b37c311be54d2cb0fc540d819847db66d76a28",
- *		 "email": "smith@matrix.com",
- *		 "number": "666666665",
- *		 "favorites": "[1,7,9,10]"
+ *       "email": "smith@matrix.com",
+ *       "number": "666666665",
+ *       "favorites": "[1,7,9,10]"
  *     }
  *
  * @apiError (Error 500) DBError Database error
@@ -69,9 +69,9 @@ router.get('/', function(req, res) {
  *       "result": "true",
  *       "name": "Smith",
  *       "password": "e2bd05dfa68d1b2fa5deabc4a9b37c311be54d2cb0fc540d819847db66d76a28",
- *		 "email": "smith@matrix.com",
- *		 "number": "666666665",
- *		 "favorites": "[1,7,9,10]"
+ *       "email": "smith@matrix.com",
+ *       "number": "666666665",
+ *       "favorites": "[1,7,9,10]"
  *     }
  *
  * 
@@ -87,13 +87,13 @@ router.get('/', function(req, res) {
 
 router.post('/', function(req, res) {
 
-    registro(req)
+    register(req)
         .then(function() {
-            res.sendStatus(201); //Registro creado
+            res.status(201).send('Register completed'); //Registro creado
         })
         .catch(function(err) {
             console.log(err);
-            res.sendStatus(400); //Error al añadir registro
+            res.send(err); //Error al añadir registro
         })
 });
 
@@ -109,7 +109,7 @@ router.post('/', function(req, res) {
 /***Texto indicando error si ERR********/
 /***************************************/
 
-function registro(req) {
+function register(req) {
     var usuario = new User(req.body);
     var query = User.find(req.body);
 
@@ -124,30 +124,30 @@ function registro(req) {
     console.log("Email: ", email);
     console.log("Number: ", number);
     console.log("Favorites: ", favorites);
-    
 
-
-    //console.log(validacion(nombre, email));
-    //Queremos que el nombre y el email sean unicos (Validacion)
-    return validacion(name, email)
+    return new Promise(function(resolve, rejected){
+        validation(name, email, number)
         .then(
             function() {
+                console.log('salvando');
                 /*Hashing*/
-                 req.body['password'] = crypto.createHmac('sha256', password)
+                req.body['password'] = crypto.createHmac('sha256', password)
                     .digest('hex');
 
-                var usuario = new User(req.body);
+                var user = new User(req.body);
                 //Lo guardamos en la BD
-                usuario.save(function(err, newRow) {
+                user.save(function(err, newRow) {
                     if (err) return { result: false, err: err };
-                    return { result: true, row: newRow };
+                    return resolve({ result: true, row: newRow });
                 });
             })
-        .catch({
-            function() {
-                return 'Register error';
+        .catch(
+            function(err) {
+                console.log(err);
+                rejected(err);
             }
-        });
+        );
+    });
 }
 
 /***************************************/
@@ -162,20 +162,34 @@ function registro(req) {
 /***Promesa indicando resolve o rejected/
 /***************************************/
 
-function validacion(nombre, email) {
-    console.log('Nombre');
-    return validarCampo('nombre', nombre)
-        .then(
-            function() {
-                console.log('Email');
-                return validarCampo('email', email);
-            })
-        .catch(
-            function() {
-                console.log('Ha habido algun error');
-                return rejected();
-            }
-        )
+function validation(name, email, number) {
+    console.log('Name');
+    return new Promise(function(resolve, rejected) {
+        validateData('name', name)
+            .then(
+                function() {
+                    console.log('Email');
+                    return validateData('email', email);
+                })
+            .then(
+                function() {
+                    console.log('Number');
+                    return validateData('number', number);
+                })
+            .then(
+                function() {
+                    console.log('Promise resolved');
+                    resolve();
+                }
+            )
+            .catch(
+                function(err) {
+                    console.log(err);
+                    rejected(err);
+                }
+            )
+    });
+
 }
 
 
@@ -190,7 +204,7 @@ function validacion(nombre, email) {
 /**Salida:******************************/
 /***Promesa indicando resolve o rejected/
 /***************************************/
-function validarCampo(campo, dato) {
+function validateData(campo, dato) {
     return new Promise(function(resolve, rejected) {
         var filtro = {};
         filtro[campo] = dato;
@@ -199,14 +213,16 @@ function validarCampo(campo, dato) {
         query.exec(function(err, rows) {
             if (err) {
                 console.log(err)
-                return rejected();
+                return rejected(err);
             }
             //Comprobamos que no hemos obtenido resultados
             if (rows.length > 0) {
-                console.log('Campo repetido');
-                return rejected();
+                console.log('Data already exists');
+                console.log(dato);
+                error = 'Data already exists: ' + dato;
+                return rejected(error);
             }
-            console.log('Campo correcto!');
+            console.log('Correct data!');
             resolve();
         });
     });
