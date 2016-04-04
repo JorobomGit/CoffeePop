@@ -1,0 +1,15 @@
+{
+    "users": [{
+        "name": "Axl",
+        "password": "e2bd05dfa68d1b2fa5deabc4a9b37c311be54d2cb0fc540d819847db66d76a28",
+ 		"email": "axl@guns.com",
+ 		"number": "666666665",
+ 		"favorites": "[1,7,9,10]"
+    }, {
+        "name": "Slash",
+        "password": "e2bd05dfa68d1b2fa5deabc4a9b37c311be54d2cb0fc540d819847db66d76a28",
+ 		"email": "slash@guns.com",
+ 		"number": "666666665",
+ 		"favorites": "[1,7,9,10]"
+    }]
+}

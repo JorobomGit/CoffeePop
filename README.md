@@ -2,19 +2,20 @@
 COFFEEPOP    
 </pre>
 
-##
+##Web Application with coffee shops near you.
+###Server uses express in order to follow MVC basic pattern.
 
-###Para empezar: 
+###To start server: 
 
- 1 Ejecutamos startMongo.bat para iniciar el servidor de Mongo
+ 1 Run startMongo.bat to start Mongo server
 ```
 startMongo
 ```
- 2 cd nodepop
+ 2 cd server
 ```
-cd nodepop
+cd server
 ```
- 3 Instalamos dependencias con npm install
+ 3 Install dependencies with npm
 ```
 npm install
 ```
