@@ -5,7 +5,10 @@ var mongoose = require('mongoose');
 var coffeeSchema = mongoose.Schema({
     name: String,
     address: String,
-    number: String
+    number: String,
+    email: String,
+    rating: Number,
+    views: Number
 });
 
 

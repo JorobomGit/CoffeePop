@@ -21,12 +21,12 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         // return $http.get('/api/movies');
     }
 
-    this.createUser = function(name, password){
+    this.loginUser = function(name, password) {
         // Crear el objeto diferido
         var deffered = $q.defer();
-        console.log("Crear usuario");
+        console.log("Login usuario");
 
-        var user = {name, password};
+        var user = { name, password };
         console.log(user);
         // hacer asincrono el trabajo
         $http.post(apiPath.login, user).then(
@@ -44,7 +44,31 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         );
         //devolver la promesa
         return deffered.promise;
+    }
 
+    this.createUser = function(name, password, email, number) {
+        // Crear el objeto diferido
+        var deffered = $q.defer();
+        console.log("Crear usuario");
+
+        var user = { name, password, email, number };
+        console.log(user);
+        // hacer asincrono el trabajo
+        $http.post(apiPath.users, user).then(
+            //console.log("Api paths", apiPath.movies);
+            //peticion ok
+            function(response) {
+                //resolver la promesa
+                deffered.resolve(response.data);
+            },
+            //peticion KO
+            function(response) {
+                //rechazar la promesa
+                deffered.reject(response.data);
+            }
+        );
+        //devolver la promesa
+        return deffered.promise;
     }
 
     this.getMovies = function() {
@@ -109,7 +133,7 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         // Crear el objeto diferido
         var deffered = $q.defer();
         //console.log("model.username",model.username );
-        
+
         // hacer asincrono el trabajo
         $http.post(apiPath.movies, movie).then(
             //peticion ok

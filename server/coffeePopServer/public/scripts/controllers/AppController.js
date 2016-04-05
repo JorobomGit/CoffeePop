@@ -34,7 +34,8 @@ angular.module("pelisAngular").controller("AppController",
         });
 
         $scope.login = function(username, password) {
-            APIClient.createUser(username, password).then(
+            $scope.uiState = 'loading';
+            APIClient.loginUser(username, password).then(
                 // promesa resuelta
                 function(data) {
                     console.log("Login Successful!");
@@ -50,6 +51,24 @@ angular.module("pelisAngular").controller("AppController",
             );
         };
 
+        $scope.signup = function(username, password, email, number) {
+            $scope.uiState = 'loading';
+            APIClient.createUser(username, password, email, number).then(
+                // promesa resuelta
+                function(data) {
+                    console.log("Register Successful!");
+                    HtmlStorage.saveUser(username);
+                    $location.url(paths.movieList);
+                    $window.alert("Register successful!");
+                },
+                // promesa rechazada
+                function(data) {
+                    $scope.uiState = 'error';
+                    $window.alert("Login failed :( Check your username and your password!");
+                    console.log("login error");
+                }
+            );
+        };
 
     }]
 );
