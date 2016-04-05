@@ -11,8 +11,14 @@ var userSchema = mongoose.Schema({
 });
 
 
-userSchema.statics.list = function(sort, cb) {
-    var query = User.find({});
+userSchema.statics.list = function(req, cb) {
+    var filtro = {};
+    if(req.params.id!=undefined){
+        filtro['id'] = req.params.id;
+    }
+
+    var query = User.find(filtro);
+    var sort = req.query.sort || 'name';
     query.sort(sort);
     return query.exec(function(err, rows) {
         if (err) {
