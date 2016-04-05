@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="pelisAngular" ng-controller="AppController">
+
+<head>
+    <title ng-bind-html="model.title">PelisAngular</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="dist/style.css">
+</head>
+
+<body>
+    <div ng-include="'views/Menu.html'"  ng-show="menu==true"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div ng-view></div>
+
+            </div>
+        </div>
+    </div>
+    
+    <script src="dist/app.js"></script>
+</body>
+
+</html>

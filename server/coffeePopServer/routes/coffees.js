@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Coffee = mongoose.model('Coffee');
-var auth = require('../lib/auth');
 
 var crypto = require('crypto');
 
@@ -36,9 +35,7 @@ var crypto = require('crypto');
  *        "err": "DBError"
  *     }
  */
-router.get('/', function(req, res) {
-    /*Check if user is correctly logged*/
-    auth(req, res);
+router.get('/', function(req, res) {    
 
     var sort = req.query.sort || 'name';
 

@@ -1,0 +1,23 @@
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+    <div class="text-center">
+        <form name="loginForm" class="form-signin" novalidate ng-submit="login(model.username, model.password)">
+            <h2 class="form-signin-heading">Please log in or sign up if u're new here!</h2>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" name="username" required class="form-control" ng-model="model.username" placeholder="Username" autofocus>
+            <div class="text-danger" ng-show="loginForm.username.$dirty && loginForm.username.$error.required">
+                The username is required
+            </div>
+            <br>
+            <label for="password" class="sr-only">Password</label>
+            <input type="password" name="password" required class="form-control" ng-model="model.password" placeholder="Password" autofocus>
+            <br>
+            <div class="text-danger" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">
+                The password is required
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!loginForm.$valid">Log in</button>
+        </form>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    </div>
+</div>

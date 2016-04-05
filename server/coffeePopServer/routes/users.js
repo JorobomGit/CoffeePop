@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var auth = require('../lib/auth');
 
 var crypto = require('crypto');
 

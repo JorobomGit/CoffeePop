@@ -1,0 +1,26 @@
+{
+  "name": "angularjs",
+  "version": "1.0.0",
+  "description": "1 Ejecutamos startMongo.bat para iniciar el servidor de Mongo\r ```\r startMongo\r ```\r  2 cd nodepop\r ```\r cd nodepop\r ```\r  3 Instalamos dependencias con npm install\r ```\r npm install\r ```\r  4 npm run InstallDB (opcional). Para inicializar base de datos\r ```\r npm run InstallDB\r ```\r  5 Para generar documentación: npm run apidoc\r ```\r npm run apidoc\r ```\r  6 nodemon para ejecutar nuestra aplicación\r ```\r nodemon\r ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://JorobomGit@github.com/JorobomGit/pruebasAngularJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JorobomGit/pruebasAngularJS/issues"
+  },
+  "homepage": "https://github.com/JorobomGit/pruebasAngularJS#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^1.0.0",
+    "grunt-contrib-less": "^1.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
