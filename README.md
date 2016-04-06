@@ -1,5 +1,12 @@
 <pre>
-COFFEEPOP    
+    __   ___   _____  _____   ___    ___  ____    ___   ____  
+   /  ] /   \ |     ||     | /  _]  /  _]|    \  /   \ |    \ 
+  /  / Y     Y|   __j|   __j/  [_  /  [_ |  o  )Y     Y|  o  )
+ /  /  |  O  ||  l_  |  l_ Y    _]Y    _]|   _/ |  O  ||   _/ 
+/   \_ |     ||   _] |   _]|   [_ |   [_ |  |   |     ||  |   
+\     |l     !|  T   |  T  |     T|     T|  |   l     !|  |   
+ \____j \___/ l__j   l__j  l_____jl_____jl__j    \___/ l__j   
+                                                                  
 </pre>
 
 ##Web Application with coffee shops near you.
