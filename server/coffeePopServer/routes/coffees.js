@@ -35,16 +35,17 @@ var crypto = require('crypto');
  *        "err": "DBError"
  *     }
  */
-router.get('/', function(req, res) {    
+router.get('/', function(req, res) {
 
-    var sort = req.query.sort || 'name';
-
-    Coffee.list(sort, function(err, rows) {
-        if (err) return res.json({ result: false, err: err });
+    Coffee.list(req, function(err, rows) {
+        if (err) {
+            return res.json({ result: false, err: err });
+        }
         //console.log(rows);
-        res.render('coffees', { result: true, rows: rows });
+        res.json({ result: true, rows: rows });
     });
 });
+
 
 /**
  * @api {post} /coffee Post Coffee: Insert coffee into db
@@ -80,6 +81,9 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
     var coffee = new Coffee(req.body);
+    console.log(coffee);
+    var date = new Date();
+    coffee['added'] = date.getTime();
     //Lo guardamos en la BD
     coffee.save(function(err, newRow) {
         if (err) {

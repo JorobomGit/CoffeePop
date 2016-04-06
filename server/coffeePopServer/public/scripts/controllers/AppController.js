@@ -7,7 +7,12 @@ angular.module("pelisAngular").controller("AppController",
 
         controller.titles = {};
 
-        controller.titles[paths.movies] = "Movies List";
+        controller.titles[paths.account] = "Account";
+        controller.titles[paths.coffees] = "Coffees :D";
+        controller.titles[paths.nearMe] = "Lets find!";
+        controller.titles[paths.favs] = "Favorite";
+        controller.titles[paths.login] = "Login";
+        controller.titles[paths.addCoffee] = "Add Coffeeeee";
 
         //Model init
         $scope.model = {
@@ -39,8 +44,9 @@ angular.module("pelisAngular").controller("AppController",
                 // promesa resuelta
                 function(data) {
                     console.log("Login Successful!");
-                    HtmlStorage.saveUser(username);
-                    $location.url(paths.movieList);
+                    console.log("Datos", data);
+                    HtmlStorage.saveUser(data[0]);
+                    $location.url(paths.coffees);
                 },
                 // promesa rechazada
                 function(data) {
@@ -58,7 +64,7 @@ angular.module("pelisAngular").controller("AppController",
                 function(data) {
                     console.log("Register Successful!");
                     HtmlStorage.saveUser(username);
-                    $location.url(paths.movieList);
+                    $location.url(paths.coffees);
                     $window.alert("Register successful!");
                 },
                 // promesa rechazada

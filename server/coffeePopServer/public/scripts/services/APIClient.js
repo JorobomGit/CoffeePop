@@ -1,4 +1,4 @@
-angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", function($http, $q, apiPath, URL) {
+angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", "HtmlStorage", function($http, $q, apiPath, URL, HtmlStorage) {
     this.apiRequest = function(url) {
         //Hay que devolver las películas, no un objeto de la petición
         //Por lo que habrá que resolver el retorno de http.get
@@ -34,6 +34,8 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
             //peticion ok
             function(response) {
                 //resolver la promesa
+                console.log("*****")
+                console.log(response);
                 deffered.resolve(response.data);
             },
             //peticion KO
@@ -71,12 +73,22 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         return deffered.promise;
     }
 
-    this.getMovies = function() {
-        return this.apiRequest(apiPath.movies);
+
+    this.getUsers = function() {
+        return this.apiRequest(apiPath.users);
     };
 
-    this.getMovie = function(movieId) {
-        var url = URL.resolve(apiPath.movieDetail, { id: movieId });
+    this.getUser = function(name) {
+        var url = apiPath.users + "/?name=" + name;
+        return this.apiRequest(url);
+    };
+
+    this.getCoffees = function() {
+        return this.apiRequest(apiPath.coffees);
+    };
+
+    this.getCoffee = function(id) {
+        var url = apiPath.coffees + "/?id=" + id;
         return this.apiRequest(url);
     };
 

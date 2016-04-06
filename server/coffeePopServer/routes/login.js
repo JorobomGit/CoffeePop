@@ -68,11 +68,11 @@ router.post('/', function(req, res) {
         //Comprobamos que no hemos obtenido resultados
         if (rows.length == 0) {
             console.log('Login incorrecto');
-            res.sendStatus(401);
+            res.status(401);
             return;
         }
         console.log('Login Correcto');
-        res.sendStatus(200);
+        res.status(200).send(rows);
     });
     return;
 });

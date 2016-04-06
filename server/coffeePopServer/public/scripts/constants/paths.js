@@ -1,9 +1,9 @@
 angular.module("pelisAngular").constant("paths", {
 	login: "/",
-    movieList: "/movies",
-    newMovie: "/movies/new",
-	movieDetail: "/movies/:id",
-	movieUserList: "/moviesUser",
-	movieRentList: "/moviesRented",
-	notFound: "/sorry"
+    account: "/account",
+    coffees: "/coffees",
+    coffeeDetail: "/coffeeDetail",
+	nearMe: "/nearMe",
+	addCoffee: "/addCoffee",
+	favs: "/favs"
 })
