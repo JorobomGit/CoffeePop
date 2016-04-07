@@ -1,4 +1,4 @@
-angular.module("pelisAngular").value("apiPath", {
+angular.module("coffeePop").value("apiPath", {
 	login: "/login",
 	users: "/users",
 	coffees: "/coffees",

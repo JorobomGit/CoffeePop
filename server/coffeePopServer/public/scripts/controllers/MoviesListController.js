@@ -1,4 +1,4 @@
-angular.module("pelisAngular").controller("MoviesListController", ["$scope", "$location", "HtmlStorage","$log", "APIClient", "URL", "paths",
+angular.module("coffeePop").controller("MoviesListController", ["$scope", "$location", "HtmlStorage","$log", "APIClient", "URL", "paths",
     function($scope, $location, HtmlStorage, $log, APIClient, URL, paths) {
 
         /*Redireccion si no esta logeado*/

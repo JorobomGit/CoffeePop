@@ -7,10 +7,12 @@ var coffeeSchema = mongoose.Schema({
     address: String,
     number: String,
     email: String,
+    description: String,
     rating: Number,
     views: Number,
     added: Date,
-    url_img: String
+    url_img: String,
+    user: String
 });
 
 

@@ -84,6 +84,8 @@ router.post('/', function(req, res) {
     console.log(coffee);
     var date = new Date();
     coffee['added'] = date.getTime();
+    console.log(req);
+    //coffee['user'] = date.getTime();
     //Lo guardamos en la BD
     coffee.save(function(err, newRow) {
         if (err) {

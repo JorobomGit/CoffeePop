@@ -1,4 +1,4 @@
-angular.module("pelisAngular").controller("AccountController", ["$scope", "$routeParams", "$location", "APIClient", "HtmlStorage", "paths",
+angular.module("coffeePop").controller("AccountController", ["$scope", "$routeParams", "$location", "APIClient", "HtmlStorage", "paths",
         function($scope, $routeParams, $location, APIClient, HtmlStorage, paths) {
             //scope init
             $scope.model = {};

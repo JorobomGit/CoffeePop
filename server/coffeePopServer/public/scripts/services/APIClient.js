@@ -1,4 +1,4 @@
-angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "URL", "HtmlStorage", function($http, $q, apiPath, URL, HtmlStorage) {
+angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL", "HtmlStorage", function($http, $q, apiPath, URL, HtmlStorage) {
     this.apiRequest = function(url) {
         //Hay que devolver las películas, no un objeto de la petición
         //Por lo que habrá que resolver el retorno de http.get
@@ -117,13 +117,13 @@ angular.module("pelisAngular").service("APIClient", ["$http", "$q", "apiPath", "
         return deffered.promise;
     };
 
-    /*crear una nueva pelicula, hacer un post a la URL */
-    this.createMovie = function(movie) {
+
+    this.createCoffee = function(coffee) {
         // Crear el objeto diferido
         var deffered = $q.defer();
-
+        coffee['user'] = HtmlStorage.getUser()['name'];
         // hacer asincrono el trabajo
-        $http.post(apiPath.movies, movie).then(
+        $http.post(apiPath.coffees, coffee).then(
             //console.log("Api paths", apiPath.movies);
             //peticion ok
             function(response) {

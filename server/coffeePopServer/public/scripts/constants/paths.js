@@ -1,4 +1,4 @@
-angular.module("pelisAngular").constant("paths", {
+angular.module("coffeePop").constant("paths", {
 	login: "/",
     account: "/account",
     coffees: "/coffees",

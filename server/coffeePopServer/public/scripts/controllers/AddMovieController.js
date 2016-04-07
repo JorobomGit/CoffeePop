@@ -1,4 +1,4 @@
-angular.module("pelisAngular").controller("AddMovieController", ["$scope", "$location", "$routeParams", "$log", "APIClient", "URL", "paths",
+angular.module("coffeePop").controller("AddMovieController", ["$scope", "$location", "$routeParams", "$log", "APIClient", "URL", "paths",
     function($scope, $location, $routeParams, $log, APIClient, URL, paths) {
 
         //scope init

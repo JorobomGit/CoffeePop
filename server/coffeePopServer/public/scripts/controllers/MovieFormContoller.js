@@ -1,4 +1,4 @@
-angular.module("pelisAngular").controller("MovieFormController", ["$scope", "APIClient", function($scope, APIClient) {
+angular.module("coffeePop").controller("MovieFormController", ["$scope", "APIClient", function($scope, APIClient) {
 
     $scope.model = {};
     $scope.successMessage = null;

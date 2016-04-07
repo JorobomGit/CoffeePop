@@ -1,4 +1,4 @@
-angular.module("pelisAngular").directive("mediaItemList", function() {
+angular.module("coffeePop").directive("mediaItemList", function() {
     return {
         restrict: "AE",
         scope: {

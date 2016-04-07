@@ -1,4 +1,4 @@
-angular.module("pelisAngular").controller("CoffeeDetailController", ["$scope", "$routeParams", "$location", "APIClient", "paths",
+angular.module("coffeePop").controller("CoffeeDetailController", ["$scope", "$routeParams", "$location", "APIClient", "paths",
         function($scope, $routeParams, $location, APIClient, paths) {
             //scope init
             $scope.model = {};

@@ -13,13 +13,15 @@
             <tr>
                 <th>Name</th>
                 <th>Address</th>
+                <th>Number</th>
                 <th>Email</th>
                 <th>Rating</th>
                 <th>Views</th>
                 <th>Added</th>
                 <th>Url_img</th>
+                <th>User</th>
                 <th>
-                    <input type="search" ng-model="query.title" placeholder="Search..." class="from-control">
+                    <input type="search" ng-model="query.name" placeholder="Search..." class="from-control">
                 </th>
             </tr>
         </thead>
@@ -30,6 +32,9 @@
                 </td>
                 <td>
                     {{::item.address}}
+                </td>
+                <td>
+                    {{::item.number}}
                 </td>
                 <td>
                     {{::item.email}}
@@ -44,11 +49,13 @@
                     {{::item.added}}
                 </td>
                 <td>
-                    <img ng-src="{{::item.poster_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
+                    <img ng-src="{{::item.url_img}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
+                </td>
+                <td>
+                    {{::item.user}}
                 </td>
                 <td>
                     <a href="#{{::getCoffeeDetail(item) }}" class="btn btn-default">View</a>
-                    <button ng-click="rentMovie({ stuff: item })" class="btn btn-default">Rent</button>
                     <br>
                     <br>
                 </td>

@@ -1,51 +1,54 @@
-<div ng-controller="AddMovieController">
+<div ng-controller="AddCoffeeController">
     <div class="text-center">
-        <h1> Add Movie </h1>
-        <form name="createMovie" novalidate class="form-signin" ng-submit="addMovie()">
+        <h1> Add Coffee </h1>
+        <form name="createCoffee" novalidate class="form-signin" ng-submit="addCoffee()">
             <div class="row">
-                <div class="col-sm-3">
-                    <label for="movieTitle">Movie Title</label>
-                    <br>
-                    <input type="text" name="movieTitle" placeholder="Title..." class="form-control" autofocus required ng-model="model.title">
-                    <br>
-                    <div class="text-danger" ng-show="createMovie.movieTitle.$dirty && createMovie.movieTitle.$error.required">
-                        Title is required
-                    </div>
-                    <br>
-                    <label for="poster">Poster</label>
-                    <br>
-                    <input type="url" name="poster" placeholder="URL Image..." class="form-control" required ng-model="model.poster_url">
-                    <br>
-                    <div class="text-danger" ng-show="createMovie.poster.$dirty && createMovie.poster.$error.required && createMovie.poster.url">
-                        Url is required
-                    </div>
-                    <br>
-                </div>
-                <div class="col-sm-3">
-                    <label for="year">Year</label>
-                    <br>
-                    <input type="date" name="year" class="form-control" required ng-model="model.release_date">
-                    <br>
-                    <div class="text-danger" ng-show="createMovie.year.$dirty && createMovie.year.$error.required">
-                        <br> Date is required
-                    </div>
-                    <br>
-                    <label for="rating">Rating</label>
-                    <br>
-                    <input type="number" min="0" max="10" step="1" value="0" name="rating" placeholder="Points" class="form-control" required ng-model="model.rating">
-                    <br>
-                    <div class="text-danger" ng-show="createMovie.rating.$dirty && createMovie.rating.$error.required">
-                        <br> Rating is required
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <label for="overview">Overview (Optional)</label>
-                    <br>
-                    <textarea badwords type="text" name="overview" placeholder="Overview" class="form-control" ng-model="model.overview" rows="6"></textarea>
-                    <br>
-                </div>
+                <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!createMovie.$valid">Add Movie</button>
+                    <div class="col-sm-6">
+                        <label for="coffeeName">Coffee Name</label>
+                        <br>
+                        <input type="text" name="coffeeName" placeholder="Name..." class="form-control" autofocus required ng-model="model.name">
+                        <br>
+                        <div class="text-danger" ng-show="createCoffee.coffeeName.$dirty && createCoffee.coffeeName.$error.required">
+                            Name is required
+                        </div>
+                        <br>
+                        <label for="coffeeAddress">Coffee Address</label>
+                        <br>
+                        <input type="text" name="coffeeAddress" placeholder="Address..." class="form-control" autofocus required ng-model="model.address">
+                        <br>
+                        <div class="text-danger" ng-show="createCoffee.coffeeAddress.$dirty && createCoffee.coffeeAddress.$error.required">
+                            Address is required
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="coffeeNumber">Coffee Phone</label>
+                        <br>
+                        <input type="text" name="coffeeNumber" placeholder="Number..." class="form-control" autofocus required ng-model="model.number">
+                        <br>
+                        <div class="text-danger" ng-show="createCoffee.coffeeNumber.$dirty && createCoffee.coffeeNumber.$error.required">
+                            Number is required
+                        </div>
+                        <br>
+                        <label for="coffeeEmail">Coffee Email</label>
+                        <br>
+                        <input type="text" name="coffeeEmail" placeholder="Email..." class="form-control" autofocus required ng-model="model.email">
+                        <br>
+                        <div class="text-danger" ng-show="createCoffee.coffeeEmail.$dirty && createCoffee.coffeeEmail.$error.required">
+                            Email is required
+                        </div>
+                    </div>
+                    <label for="coffeeUrl">Coffee Img Url</label>
+                    <br>
+                    <input type="text" name="coffeeUrl" placeholder="Url..." class="form-control" autofocus required ng-model="model.url">
+                    <br>
+                    <label for="coffeeDescription">Coffee Description</label>
+                    <br>
+                    <textarea badwords type="text" name="coffeeDescription" placeholder="Description..." class="form-control" ng-model="model.description" rows="6"></textarea>
+                    <br>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!createCoffee.$valid">Add Coffee</button>
+                    <br>
                 </div>
             </div>
         </form>
