@@ -84,6 +84,7 @@ router.post('/', function(req, res) {
     console.log(coffee);
     var date = new Date();
     coffee['added'] = date.getTime();
+    coffee['views'] = 0;
     console.log(req);
     //coffee['user'] = date.getTime();
     //Lo guardamos en la BD
@@ -93,6 +94,18 @@ router.post('/', function(req, res) {
         }
         res.json({ result: true, row: newRow });
     });
+});
+
+//Actualizar un user
+router.put('/', function(req, res) {
+    console.log("REQQQQQ BODY ID")
+    console.log(req.body._id);
+    var coffee = new Coffee(req.body);
+    Coffee.update({ _id: req.body._id }, { $set: coffee },
+        function(err, data) {
+            if (err) return res.json({ result: false, err: err });
+            res.json({ result: true, row: data });
+        });
 });
 
 module.exports = router;

@@ -12,6 +12,14 @@ angular.module("coffeePop").controller("CoffeeDetailController", ["$scope", "$ro
                     $scope.model = coffee.rows[0];
                     $scope.uiState = 'ideal';
                     $scope.$emit("ChangeTitle", $scope.model.name);
+                    APIClient.updateViewsCoffee($scope.model).then(
+                        function(coffee){
+                            console.log('Visitadas aumentadas');
+                        },
+                        function(error){
+                            console.log('Error visitas');
+                        }
+                        );
                 },
                 //pelicula no encontrada
                 function(error) {

@@ -1,6 +1,5 @@
 <div ng-controller="CoffeesController">
     <h1 align="center">COFFEEEEEEE</h1>
-    <button ng-click="model=[]">Delete All</button>
     <div class="jumbotron" ng-show="uiState=='blank'">
         <p class="lead">No coffees to show :(</p>
     </div>
@@ -8,58 +7,61 @@
         Error while loading data
     </div>
     <div ng-include="'views/ProgressBar.html'" ng-show="uiState=='loading'"></div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Number</th>
-                <th>Email</th>
-                <th>Rating</th>
-                <th>Views</th>
-                <th>Added</th>
-                <th>Url_img</th>
-                <th>User</th>
-                <th>
-                    <input type="search" ng-model="query.name" placeholder="Search..." class="from-control">
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="item in model | filter:query">
-                <td>
-                    <b>{{::item.name}}</b>
-                </td>
-                <td>
-                    {{::item.address}}
-                </td>
-                <td>
-                    {{::item.number}}
-                </td>
-                <td>
-                    {{::item.email}}
-                </td>
-                <td>
-                    {{::item.rating}}
-                </td>
-                <td>
-                    {{::item.views}}
-                </td>
-                <td>
-                    {{::item.added}}
-                </td>
-                <td>
-                    <img ng-src="{{::item.url_img}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
-                </td>
-                <td>
-                    {{::item.user}}
-                </td>
-                <td>
-                    <a href="#{{::getCoffeeDetail(item) }}" class="btn btn-default">View</a>
-                    <br>
-                    <br>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <button ng-click="model=[]" ng-show="uiState!='blank'">Delete All</button>
+    <div class="table-responsive">
+        <table class="table table-striped" ng-show="uiState!='blank'">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Number</th>
+                    <th>Email</th>
+                    <th>Rating</th>
+                    <th>Views</th>
+                    <th>Added</th>
+                    <th>Url_img</th>
+                    <th>User</th>
+                    <th>
+                        <input type="search" ng-model="query.name" placeholder="Search..." class="from-control">
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in model | filter:query">
+                    <td>
+                        <b>{{::item.name}}</b>
+                    </td>
+                    <td>
+                        {{::item.address}}
+                    </td>
+                    <td>
+                        {{::item.number}}
+                    </td>
+                    <td>
+                        {{::item.email}}
+                    </td>
+                    <td>
+                        {{::item.rating}}
+                    </td>
+                    <td>
+                        {{::item.views}}
+                    </td>
+                    <td>
+                        {{::item.added}}
+                    </td>
+                    <td>
+                        <img class="img-responsive" ng-src="{{::item.img_url}}" alt="{{::item.title}}'s poster" title="{{::item.title}}">
+                    </td>
+                    <td>
+                        {{::item.user}}
+                    </td>
+                    <td>
+                        <a href="#{{::getCoffeeDetail(item) }}" class="btn btn-default">View</a>
+                        <br>
+                        <br>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

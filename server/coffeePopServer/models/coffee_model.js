@@ -11,7 +11,7 @@ var coffeeSchema = mongoose.Schema({
     rating: Number,
     views: Number,
     added: Date,
-    url_img: String,
+    img_url: String,
     user: String
 });
 
@@ -26,8 +26,8 @@ coffeeSchema.statics.list = function(req, cb) {
     }
     console.log("Filtro: ", filtro);
     var query = Coffee.find(filtro);
-    var sort = req.query.sort || 'name';
-    query.sort(sort);
+    var sort = req.query.sort || 'views';
+    query.sort([[sort, 'descending']]);
     return query.exec(function(err, rows) {
         if (err) {
             return cb(err);

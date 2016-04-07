@@ -63,7 +63,8 @@ angular.module("coffeePop").controller("AppController",
                 // promesa resuelta
                 function(data) {
                     console.log("Register Successful!");
-                    HtmlStorage.saveUser(username);
+                    HtmlStorage.saveUser(data);
+                    console.log(HtmlStorage.getUser());
                     $location.url(paths.coffees);
                     $window.alert("Register successful!");
                 },

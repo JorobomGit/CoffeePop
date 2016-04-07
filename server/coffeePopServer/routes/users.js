@@ -94,8 +94,8 @@ router.get('/', function(req, res) {
 router.post('/', function(req, res) {
 
     register(req)
-        .then(function() {
-            res.status(201).send('Register completed'); //Registro creado
+        .then(function(user) {
+            res.status(200).send(user); //Registro creado
         })
         .catch(function(err) {
             console.log(err);
@@ -146,7 +146,7 @@ function register(req) {
                         if (err) {
                             return rejected(err);
                         }
-                        return resolve({ result: true, row: newRow });
+                        return resolve(newRow);
                     });
                 })
             .catch(
