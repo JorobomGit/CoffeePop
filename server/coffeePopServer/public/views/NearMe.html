@@ -1,16 +1,4 @@
-<div id="map">
-</div>
-<script>
-function initMap() {
-    var mapDiv = document.getElementById('map');
-    var map = new google.maps.Map(mapDiv, {
-        center: {
-            lat: 44.540,
-            lng: -78.546
-        },
-        zoom: 8
-    });
-}
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?callback=initMap" async defer></script>
-</body>
+<ng-map center="current-location">
+	<marker ng-repeat="item in model" position="current-location" icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></marker>
+	<marker ng-repeat="item in model" position="{{ item.address }}" icon="https://upload.wikimedia.org/wikipedia/commons/9/90/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Coffee_%E2%80%93_Restaurants_%26_Hotels_%E2%80%93_White.png"></marker>
+</ng-map>

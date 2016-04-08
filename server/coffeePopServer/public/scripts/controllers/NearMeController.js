@@ -1,10 +1,29 @@
-angular.module("coffeePop").controller("NearMeController", ["$scope", "$routeParams", "$location", "APIClient", "HtmlStorage", "paths",
-        function($scope, $routeParams, $location, APIClient, HtmlStorage, paths) {
-            var mapDiv = document.getElementById('map');
-            var map = new google.maps.Map(mapDiv, {
-                center: { lat: 44.540, lng: -78.546 },
-                zoom: 8
-            });
+angular.module("coffeePop").controller("NearMeController", ["$scope", "$log", "$routeParams", "$location", "APIClient", "paths",
+        function($scope, $log, $routeParams, $location, APIClient, paths) {
+            //scope init
+            $scope.model = {};
+            $scope.uiState = 'loading';
+            // COntroller init
+            $scope.$emit("ChangeTitle", "Loading...");
+            APIClient.getCoffees().then(
+                // promesa resuelta
+                function(data) {
+                    $log.log("SUCCESS", data);
+                    $scope.model = data.rows;
+                    if ($scope.model.length == 0) {
+                        $scope.uiState = 'blank';
+                    } else {
+                        $scope.uiState = 'ideal';
+                        $scope.$emit("ChangeTitle", "Coffees");
+                    }
+                },
+                // promesa rechazada
+                function(data) {
+                    $log.error("ERROR", data);
+                    $scope.uiState = 'error';
+                }
+            );
+
         }
     ]
 

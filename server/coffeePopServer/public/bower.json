@@ -19,6 +19,7 @@
     "bootstrap": "^3.3.6",
     "angular-route": "^1.5.2",
     "moment": "^2.12.0",
-    "angular-sanitize": "^1.5.3"
+    "angular-sanitize": "^1.5.3",
+    "ngmap": "^1.17.3"
   }
 }
