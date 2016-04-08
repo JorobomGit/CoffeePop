@@ -1,4 +1,4 @@
-angular.module("coffeePop").controller("CoffeesController", ["$scope", "$location", "HtmlStorage", "$log", "APIClient", "URL", "paths",
+angular.module("coffeePop").controller("FavsController", ["$scope", "$location", "HtmlStorage", "$log", "APIClient", "URL", "paths",
     function($scope, $location, HtmlStorage, $log, APIClient, URL, paths) {
 
         /*Redireccion si no esta logeado*/
@@ -70,5 +70,13 @@ angular.module("coffeePop").controller("CoffeesController", ["$scope", "$locatio
                 $scope.uiState = 'error';
             }
         );
+
+        $scope.filterFavs = function(coffee) {
+            var user = HtmlStorage.getUser();
+            /*Check if coffee is in user favorites*/
+            if(user.favorites.indexOf(coffee._id) !== -1){
+                return coffee;
+            }
+        }
     }
 ]);

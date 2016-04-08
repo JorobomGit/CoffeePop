@@ -96,7 +96,7 @@ router.post('/', function(req, res) {
     });
 });
 
-//Actualizar un user
+//Coffee update
 router.put('/', function(req, res) {
     console.log("REQQQQQ BODY ID")
     console.log(req.body._id);

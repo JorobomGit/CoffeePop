@@ -93,12 +93,28 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
         return this.apiRequest(url);
     };
 
-    this.updateViewsCoffee = function(coffee){
+    this.updateUser = function(user) {
+        var deffered = $q.defer();
+        $http.put(apiPath.users, user).then(
+            //peticion ok
+            function(response) {
+                //resolver la promesa
+                deffered.resolve(response.data);
+            },
+            //peticion KO
+            function(response) {
+                //rechazar la promesa
+                deffered.reject(response.data);
+            }
+        );
+        return deffered.promise;
+    }
+
+    this.updateViewsCoffee = function(coffee) {
         var deffered = $q.defer();
         coffee['views'] = coffee['views'] + 1;
         /*Update views*/
         $http.put(apiPath.coffees, coffee).then(
-            //console.log("Api paths", apiPath.movies);
             //peticion ok
             function(response) {
                 //resolver la promesa

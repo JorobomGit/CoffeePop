@@ -236,4 +236,17 @@ function validateData(campo, dato) {
     });
 }
 
+
+//Actualizar un user
+router.put('/', function(req, res) {
+    console.log("REQQQQQ BODY ID")
+    console.log(req.body);
+    var user = new User(req.body);
+    User.update({ _id: req.body._id }, { $set: user },
+        function(err, data) {
+            if (err) return res.json({ result: false, err: err });
+            res.json({ result: true, row: data });
+        });
+});
+
 module.exports = router;
