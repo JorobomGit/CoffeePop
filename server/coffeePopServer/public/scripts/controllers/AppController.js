@@ -2,7 +2,7 @@ angular.module("coffeePop").controller("AppController",
 
     //Cada vez que queramos utilizar un servicio lo tenemos que inyectar tanto como parametro como
     //en la funcion
-    ["$scope", "$window", "$sce", "$location", "HtmlStorage", "paths", "APIClient", function($scope, $window, $sce, $location, HtmlStorage, paths, APIClient) {
+    ["$scope", "$window", "$sce", "$location", "$interval", "HtmlStorage", "paths", "APIClient", function($scope, $window, $sce, $location, $interval, HtmlStorage, paths, APIClient) {
         var controller = this;
 
         controller.titles = {};
@@ -76,6 +76,28 @@ angular.module("coffeePop").controller("AppController",
                 }
             );
         };
+
+
+        function randomBG() {
+            var random = Math.random();
+            if (random < 0.33) {
+                $scope.bg1 = true;
+                $scope.bg2 = false;
+                $scope.bg3 = false;
+            } else if (random > 0.66) {
+                $scope.bg1 = false;
+                $scope.bg2 = true;
+                $scope.bg3 = false;
+            } else {
+                $scope.bg1 = false;
+                $scope.bg2 = false;
+                $scope.bg3 = true;
+            }
+            return;
+        }
+
+        $interval(randomBG, 7000);
+
 
     }]
 );

@@ -24,6 +24,12 @@ angular.module("coffeePop").controller("NearMeController", ["$scope", "$log", "$
                 }
             );
 
+            showDetail = function(e, coffee) {
+                vm.coffee = coffee;
+                vm.map.showInfoWindow('foo-iw', coffee._id);
+            };
+
+
         }
     ]
 

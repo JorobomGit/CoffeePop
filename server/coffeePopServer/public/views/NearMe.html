@@ -1,4 +1,19 @@
-<ng-map center="current-location">
-	<marker ng-repeat="item in model" position="current-location" icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></marker>
-	<marker ng-repeat="item in model" position="{{ item.address }}" icon="https://upload.wikimedia.org/wikipedia/commons/9/90/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Coffee_%E2%80%93_Restaurants_%26_Hotels_%E2%80%93_White.png"></marker>
-</ng-map>
+<div>
+    <ng-map center="current-location">
+        <marker position="current-location" icon="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"></marker>
+        <div ng-repeat="item in model">
+            <marker id="{{ item._id }}" position="{{ item.address }}" icon="https://upload.wikimedia.org/wikipedia/commons/9/90/Map_marker_icon_%E2%80%93_Nicolas_Mollet_%E2%80%93_Coffee_%E2%80%93_Restaurants_%26_Hotels_%E2%80%93_White.png" on-click="showDetail(item)"></marker>
+            
+            <info-window id="foo-iw">
+                <div ng-non-bindable>
+                    <div id="siteNotice"></div>
+                    <h1 id="firstHeading" class="firstHeading">{{item.name}}</h1>
+                    <div id="bodyContent">
+                        <p> {{item.address}} {{item.number}}</p>
+                        {{item._id}}
+                    </div>
+                </div>
+            </info-window>
+        </div>
+    </ng-map>
+</div>
