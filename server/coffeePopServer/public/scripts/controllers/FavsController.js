@@ -10,6 +10,8 @@ angular.module("coffeePop").controller("FavsController", ["$scope", "$location",
 
         $scope.uiState = 'loading';
 
+
+
         $scope.favs = function(coffee) {
             var user = HtmlStorage.getUser();
             console.log("Useeeer: ", user);
@@ -57,11 +59,12 @@ angular.module("coffeePop").controller("FavsController", ["$scope", "$location",
             function(data) {
                 $log.log("SUCCESS", data);
                 $scope.model = data.rows;
-                if ($scope.model.length == 0) {
+                var user = HtmlStorage.getUser();
+                if ($scope.model.length == 0 || user.favorites.length == 0) {
                     $scope.uiState = 'blank';
                 } else {
                     $scope.uiState = 'ideal';
-                    $scope.$emit("ChangeTitle", "Coffees");
+                    $scope.$emit("ChangeTitle", "Favorite Coffees <3");
                 }
             },
             // promesa rechazada
@@ -74,7 +77,7 @@ angular.module("coffeePop").controller("FavsController", ["$scope", "$location",
         $scope.filterFavs = function(coffee) {
             var user = HtmlStorage.getUser();
             /*Check if coffee is in user favorites*/
-            if(user.favorites.indexOf(coffee._id) !== -1){
+            if (user.favorites.indexOf(coffee._id) !== -1) {
                 return coffee;
             }
         }

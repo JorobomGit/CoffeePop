@@ -62,11 +62,13 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
             //peticion ok
             function(response) {
                 //resolver la promesa
+                console.log("Resuelve promesa");
                 deffered.resolve(response.data);
             },
             //peticion KO
             function(response) {
                 //rechazar la promesa
+                console.log("Rechaza promesa");
                 deffered.reject(response.data);
             }
         );

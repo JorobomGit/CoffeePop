@@ -99,7 +99,7 @@ router.post('/', function(req, res) {
         })
         .catch(function(err) {
             console.log(err);
-            res.send(err); //Error al añadir registro
+            res.status(400).send(err); //Error al añadir registro
         })
 });
 

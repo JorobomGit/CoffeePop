@@ -71,8 +71,8 @@ angular.module("coffeePop").controller("AppController",
                 // promesa rechazada
                 function(data) {
                     $scope.uiState = 'error';
-                    $window.alert("Login failed :( Check your username and your password!");
-                    console.log("login error");
+                    $window.alert("Register failed :S Try other data please");
+                    console.log("Register error");
                 }
             );
         };

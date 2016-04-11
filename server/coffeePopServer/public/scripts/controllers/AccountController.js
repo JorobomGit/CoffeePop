@@ -1,5 +1,10 @@
 angular.module("coffeePop").controller("AccountController", ["$scope", "$routeParams", "$location", "APIClient", "HtmlStorage", "paths",
         function($scope, $routeParams, $location, APIClient, HtmlStorage, paths) {
+        /*Redireccion si no esta logeado*/
+        if (!HtmlStorage.getUser()) {
+            $location.url(paths.login);
+        }
+            
             //scope init
             $scope.model = {};
             $scope.uiState = 'loading';

@@ -1,10 +1,31 @@
-angular.module("coffeePop").controller("NearMeController", ["$scope", "$log", "$routeParams", "$location", "APIClient", "paths",
-        function($scope, $log, $routeParams, $location, APIClient, paths) {
+angular.module("coffeePop").controller("NearMeController", ["$scope", "$log", "$routeParams", "$location", "APIClient", "paths", "NgMap",
+        function($scope, $log, $routeParams, $location, APIClient, paths, NgMap) {
             //scope init
             $scope.model = {};
             $scope.uiState = 'loading';
             // COntroller init
             $scope.$emit("ChangeTitle", "Loading...");
+
+            var vm = this;
+
+            NgMap.getMap().then(function(map) {
+                console.log('map', map);
+                vm.map = map;
+            });
+
+            $scope.showDetail = function(e, coffee) {
+                console.log(coffee._id);
+                $scope.nameInfo = coffee.name;
+                $scope.addressInfo = coffee.address;
+                $scope.numberInfo = coffee.number;
+                vm.map.showInfoWindow('foo-iw', coffee._id);
+            };
+
+            $scope.hideDetail = function() {
+                vm.map.hideInfoWindow('foo-iw');
+            };
+
+
             APIClient.getCoffees().then(
                 // promesa resuelta
                 function(data) {
@@ -14,7 +35,7 @@ angular.module("coffeePop").controller("NearMeController", ["$scope", "$log", "$
                         $scope.uiState = 'blank';
                     } else {
                         $scope.uiState = 'ideal';
-                        $scope.$emit("ChangeTitle", "Coffees");
+                        $scope.$emit("ChangeTitle", "Lets find!");
                     }
                 },
                 // promesa rechazada
@@ -23,13 +44,6 @@ angular.module("coffeePop").controller("NearMeController", ["$scope", "$log", "$
                     $scope.uiState = 'error';
                 }
             );
-
-            showDetail = function(e, coffee) {
-                vm.coffee = coffee;
-                vm.map.showInfoWindow('foo-iw', coffee._id);
-            };
-
-
         }
     ]
 

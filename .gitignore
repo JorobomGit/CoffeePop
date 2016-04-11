@@ -7,9 +7,6 @@ bower_components/
 # Archivos del SO
 .thumbs
 
-# CSS
-style.css
-
 # DB
 
 db/

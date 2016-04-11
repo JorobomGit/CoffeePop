@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+.bodyNB_bg1 {
+    background-image: url("../imgs/retro1.jpg");
+    color: black;
+}
+
+.bodyNB_bg2 {
+    background-image: url("../imgs/retro2.jpg");
+    color: black;
+    text-shadow: 0px 0px;
+}
+
+.bodyNB_bg3 {
+    background-image: url("../imgs/retro3.jpg");
+    color: black;
+    text-shadow: 0px 0px;
+}
+
+.bodyNB {
+    font-family: 'Pacifico', cursive;
+    background-size: 100%;
+    font-size: 16px;
+}
+
+@media only screen and (max-device-width: 480px) {
+    .bodyNB {
+        background-size: auto auto;
+        color: white;
+        text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    }
+}
