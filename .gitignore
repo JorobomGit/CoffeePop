@@ -14,3 +14,4 @@ db/
 # Apidoc
 
 apidoc/
+server/coffeePopServer/public/dist/app.js
