@@ -7,7 +7,6 @@ angular.module("coffeePop", ['ngRoute', 'ngSanitize', 'ngMap', 'URL']).config(['
     	controller: 'AccountController',
         templateUrl: 'views/Account.html'
     }).when(paths.coffees, {
-    	controller: 'CoffeesController',
         templateUrl: 'views/Coffees.html'
     }).when(paths.coffeeDetail, {
     	controller: 'CoffeeDetailController',
