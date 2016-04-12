@@ -57,9 +57,9 @@ angular.module("coffeePop").controller("AppController",
             );
         };
 
-        $scope.signup = function(username, password, email, number) {
+        $scope.signup = function(username, password, email, number, avatar) {
             $scope.uiState = 'loading';
-            APIClient.createUser(username, password, email, number).then(
+            APIClient.createUser(username, password, email, number, avatar).then(
                 // promesa resuelta
                 function(data) {
                     console.log("Register Successful!");

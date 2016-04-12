@@ -96,9 +96,38 @@ router.post('/', function(req, res) {
     });
 });
 
-//Coffee update
+/**
+ * @api {put} /coffees Put Coffees: Put coffees from db.
+ * @apiVersion 1.0.0
+ * @apiName UpdateCoffees
+ * @apiGroup Coffees
+ *
+ *
+ * @apiSuccess {String} id  Coffee id (unique).
+ * @apiSuccess {String} name  Coffe name.
+ * @apiSuccess {String} address   Coffee address.
+ * @apiSuccess {String} number  Coffee phone number.
+ *
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "result": "true",
+ *       "name": "Coffe & Tea",
+ *       "address": "Street Cofof 132 28383",
+ *       "number": "656666666"
+ *     }
+ *
+ * @apiError (Error 500) DBError Database error
+ *
+ * @apiErrorExample Error-Response:
+ *     HTTP/1.1 500 Internal Server Error
+ *     {
+ *        "result": "false",
+ *        "err": "DBError"
+ *     }
+ */
+
 router.put('/', function(req, res) {
-    console.log("REQQQQQ BODY ID")
     console.log(req.body._id);
     var coffee = new Coffee(req.body);
     Coffee.update({ _id: req.body._id }, { $set: coffee },

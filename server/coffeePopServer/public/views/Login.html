@@ -20,18 +20,15 @@
         <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="register=true">Sign up</button>
     </div>
-
     <div class="text-center" ng-show="register==true">
-        <form name="registerForm" class="form-signin" novalidate ng-submit="signup(model.username, model.password, model.email, model.number)">
+        <form name="registerForm" class="form-signin" novalidate ng-submit="signup(model.username, model.password, model.email, model.number, model.avatar)">
             <h2 class="form-signin-heading">Welcome! Sign up to join our beautiful CoffeePop app.</h2>
-
             <label for="username" class="sr-only">Username</label>
             <input type="text" name="username" required class="form-control" ng-model="model.username" placeholder="Username" autofocus>
             <div class="text-danger" ng-show="registerForm.username.$dirty && registerForm.username.$error.required">
                 The username is required
             </div>
             <br>
-
             <label for="password" class="sr-only">Password</label>
             <input type="password" name="password" required class="form-control" ng-model="model.password" placeholder="Password" autofocus>
             <div class="text-danger" ng-show="registerForm.password.$dirty && registerForm.password.$error.required">
@@ -41,7 +38,6 @@
                 Password too weak (6 characters min)
             </div>
             <br>
-
             <label for="email" class="sr-only">Email</label>
             <input type="email" name="email" required class="form-control" ng-model="model.email" placeholder="Email" autofocus>
             <div class="text-danger" ng-show="registerForm.email.$dirty && registerForm.email.$error.required">
@@ -51,7 +47,6 @@
                 Please, enter a valid email
             </div>
             <br>
-
             <label for="number" class="sr-only">Phone Number</label>
             <input type="text" name="number" required class="form-control" ng-model="model.number" placeholder="Phone Number" autofocus>
             <div class="text-danger" ng-show="registerForm.number.$dirty && registerForm.number.$error.required">
@@ -59,6 +54,12 @@
             </div>
             <br>
 
+            <label for="avatar" class="sr-only">Avatar</label>
+            <input type="url" name="avatar" required class="form-control" ng-model="model.avatar" placeholder="Avatar" autofocus>
+            <div class="text-danger" ng-show="registerForm.avatar.$dirty && registerForm.avatar.$error.required">
+                The avatar is required
+            </div>
+            <br>
             <button class="btn btn-lg btn-primary btn-block" type="submit" ng-disabled="!registerForm.$valid">Sign Up</button>
             <button class="btn btn-lg btn-warning btn-block" type="button" ng-click="register=false">Go Back</button>
         </form>

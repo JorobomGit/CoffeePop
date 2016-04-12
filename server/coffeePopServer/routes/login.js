@@ -7,30 +7,28 @@ var crypto = require('crypto');
 
 
 /**
- * @api {post} /coffee Post Coffee: Insert coffee into db
+ * @api {post} /coffee Post Login: Check Login
  * @apiVersion 1.0.0
- * @apiName PostCoffees
- * @apiGroup Coffees
+ * @apiName PostLogin
+ * @apiGroup Login
  *
- * @apiSuccess {String} id  Coffee id (unique).
- * @apiSuccess {String} name  Coffe name.
- * @apiSuccess {String} address   Coffee address.
- * @apiSuccess {String} number  Coffee phone number.
+ * @apiSuccess {String} id  User id (unique).
+ * @apiSuccess {String} name  User name.
+ * @apiSuccess {String} password User password
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
  *     {
  *       "result": "true",
- *       "name": "Coffe & Tea",
- *       "address": "Street Cofof 132 28383",
- *       "number": "656666666"
+ *       "name": "Jonny",
+ *       "password": "gergdfgsdger"
  *     }
  *
  * 
- * @apiError (Error 500) DBError Error Database
+ * @apiError (Error 401) Auth Errror
  * 
- * @apiErrorExample Error-Response-DB:
- *     HTTP/1.1 500 Internal Server Error
+ * @apiErrorExample Error-:
+ *     HTTP/1.1 401 Auth Error
  *     {
  *        "result": "false",
  *        "err": "DBError"

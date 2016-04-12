@@ -18,7 +18,6 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
         );
         //Devolver promesa      
         return deferred.promise;
-        // return $http.get('/api/movies');
     }
 
     this.loginUser = function(name, password) {
@@ -30,7 +29,6 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
         console.log(user);
         // hacer asincrono el trabajo
         $http.post(apiPath.login, user).then(
-            //console.log("Api paths", apiPath.movies);
             //peticion ok
             function(response) {
                 //resolver la promesa
@@ -49,16 +47,15 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
         return deffered.promise;
     }
 
-    this.createUser = function(name, password, email, number) {
+    this.createUser = function(name, password, email, number, avatar) {
         // Crear el objeto diferido
         var deffered = $q.defer();
         console.log("Crear usuario");
 
-        var user = { name, password, email, number };
+        var user = { name, password, email, number, avatar };
         console.log(user);
         // hacer asincrono el trabajo
         $http.post(apiPath.users, user).then(
-            //console.log("Api paths", apiPath.movies);
             //peticion ok
             function(response) {
                 //resolver la promesa
@@ -131,31 +128,6 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
         return deffered.promise;
     }
 
-    this.rentMovie = function(movie, username) {
-        // Crear el objeto diferido
-        var deffered = $q.defer();
-        movie['userRent'] = username;
-
-        // hacer asincrono el trabajo
-        var url = URL.resolve(apiPath.movieDetail, { id: movie.id });
-
-        $http.put(url, movie).then(
-            //console.log("Api paths", apiPath.movies);
-            //peticion ok
-            function(response) {
-                //resolver la promesa
-                deffered.resolve(response.data);
-            },
-            //peticion KO
-            function(response) {
-                //rechazar la promesa
-                deffered.reject(response.data);
-            }
-        );
-        //devolver la promesa
-        return deffered.promise;
-    };
-
 
     this.createCoffee = function(coffee) {
         // Crear el objeto diferido
@@ -163,30 +135,6 @@ angular.module("coffeePop").service("APIClient", ["$http", "$q", "apiPath", "URL
         coffee['user'] = HtmlStorage.getUser()['name'];
         // hacer asincrono el trabajo
         $http.post(apiPath.coffees, coffee).then(
-            //console.log("Api paths", apiPath.movies);
-            //peticion ok
-            function(response) {
-                //resolver la promesa
-                deffered.resolve(response.data);
-            },
-            //peticion KO
-            function(response) {
-                //rechazar la promesa
-                deffered.reject(response.data);
-            }
-        );
-        //devolver la promesa
-        return deffered.promise;
-    };
-
-    /*Elimina una nueva pelicula */
-    this.deleteMovie = function(movie) {
-        // Crear el objeto diferido
-        var deffered = $q.defer();
-        //console.log("model.username",model.username );
-
-        // hacer asincrono el trabajo
-        $http.post(apiPath.movies, movie).then(
             //peticion ok
             function(response) {
                 //resolver la promesa

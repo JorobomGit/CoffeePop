@@ -1,4 +1,4 @@
-<div ng-controller="CoffeesController">
+<div ng-controller="CoffeesController" class="animated fadeIn">
     <h1 align="center">COFFEEEEEEE</h1>
     <div class="jumbotron" ng-show="uiState=='blank'">
         <p class="lead">No coffees to show :(</p>
@@ -15,7 +15,6 @@
                     <th>Address</th>
                     <th>Number</th>
                     <th>Email</th>
-                    <th>Rating</th>
                     <th>Views</th>
                     <th>Added</th>
                     <th>Url_img</th>
@@ -38,9 +37,6 @@
                     </td>
                     <td>
                         {{::item.email}}
-                    </td>
-                    <td>
-                        {{::item.rating}}
                     </td>
                     <td>
                         {{::item.views}}
